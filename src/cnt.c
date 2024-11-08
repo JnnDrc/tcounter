@@ -41,7 +41,6 @@ int main(int argc, char** argv){
                 slct = slct == 0 ? 0 : slct - 1;
                 break;
             case 'q': 
-            case 'Q':
                 goto exit;
                 break;
             default:
