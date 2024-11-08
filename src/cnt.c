@@ -21,6 +21,17 @@ int main(int argc, char** argv){
             case 'h':
                 cntrs[slct] = cntrs[slct] == 0 ? 0 : cntrs[slct] - 1;
                 break;
+            case 'A':
+            case 'L':
+                cntrs[slct] = cntrs[slct] == UINT64_MAX ? UINT64_MAX : cntrs[slct] + 10;
+                break;
+            case 'S':
+            case 'H':
+                cntrs[slct] = cntrs[slct] == 0 ? 0 : cntrs[slct] - 10;
+                break;
+            case 'c':
+                cntrs[slct] = 0;
+                break;
             case 'n':
             case 'j':
                 slct = slct == (cntrs_cnt - 1) ? cntrs_cnt-1 : slct + 1;
@@ -38,8 +49,8 @@ int main(int argc, char** argv){
         }   
         printf("\033[1;1H");
         for(int i = 0; i < cntrs_cnt; i++){
-            printf("%ccounter: %lu                                                            \n",
-                    slct == i ? '>':' ',cntrs[i]);
+            printf("%c counter: %lu                                                            \n",
+                    slct == i ? '>':'-',cntrs[i]);
         }
         sleep(200);
     }

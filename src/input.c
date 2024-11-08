@@ -6,6 +6,7 @@ void enable_nbi(){
     tcgetattr(STDIN_FILENO, &newt);
 
     newt.c_lflag &= ~(ICANON | ECHO);
+    
 
     tcsetattr(STDIN_FILENO, TCSANOW, &newt);
 
@@ -46,6 +47,7 @@ int get_key(){
                 }
             }
         }
+        tcflush(STDIN_FILENO,TCIFLUSH);
         return ch;
     }
     return 0;
